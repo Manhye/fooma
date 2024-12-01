@@ -67,6 +67,7 @@ public class FoodPageController {
         return "take-food";  // 확인 창이 포함된 폼
     }
 
+
     // 음식 상태 업데이트 (이메일과 이름 입력 후)
     @PostMapping("/food/{id}/take")
     public String takeFood(@PathVariable("id") Long foodId,

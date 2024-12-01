@@ -1,41 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Take Food</title>
     <link rel="stylesheet" href="/css/take-food.css">
 </head>
 <body>
 <div class="container">
-    <h1>Take Food</h1>
-    <form id="take-food-form" action="/api/foods/take" method="POST">
-        <div class="form-group">
-            <label for="food-name">Food Name</label>
-            <input type="text" id="food-name" name="foodName" required placeholder="Enter food name">
+    <h1 class="title">Take Food</h1>
+    <h3 class="subheading">Food Details</h3>
+    <p><strong>Name:</strong> <span th:text="${food.name}"></span></p>
+    <p><strong>Expiration Date:</strong> <span th:text="${food.expirationDate}"></span></p>
+    <p><strong>Location:</strong> <span th:text="${food.location}"></span></p>
+    <p><strong>Category:</strong> <span th:text="${food.category.name}"></span></p> <!-- 카테고리 추가 -->
+
+    <h3 class="subheading">Are you sure you want to take this food?</h3>
+    <form action="#" th:action="@{/food/{id}/take(id=${food.id})}" method="post">
+        <div class="input-group">
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required="required">
         </div>
-        <div class="form-group">
-            <label for="food-category">Category</label>
-            <input type="text" id="food-category" name="category" required placeholder="Enter category">
+        <div class="input-group">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required="required">
         </div>
-        <div class="form-group">
-            <label for="email">Your Email</label>
-            <input type="email" id="email" name="email" required placeholder="Enter your email">
-        </div>
-        <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" required placeholder="Enter your name">
-        </div>
-        <div class="form-group">
-            <label for="location">Location</label>
-            <input type="text" id="location" name="location" required placeholder="Enter food location">
-        </div>
-        <div class="form-group">
-            <label for="expiration-date">Expiration Date</label>
-            <input type="date" id="expiration-date" name="expirationDate" required>
-        </div>
-        <button type="submit">Confirm</button>
+        <button type="submit" class="submit-btn">Confirm</button>
     </form>
+    <a href="/foods" class="back-link">Back to Food List</a>
 </div>
 </body>
 </html>
