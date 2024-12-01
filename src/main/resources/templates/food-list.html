@@ -25,8 +25,8 @@
     <ul class="food-list">
         <th:block th:each="food : ${foods}">
             <li class="food-item">
-                <span th:text="${food.name}">Food Name</span> -
-                <span th:text="${food.location}">Food Location</span> -
+                <span th:text="${food.name}">Food Name</span>
+                <span th:text="${food.location}">Food Location</span>
                 <span th:text="${food.category.name}">Category</span>
                 <a class="take-food" th:href="@{/food/{id}/take(id=${food.id})}">Take Food</a>
             </li>

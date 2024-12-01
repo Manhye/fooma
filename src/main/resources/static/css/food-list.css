@@ -28,7 +28,9 @@ h1 {
 
 .filter-form {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    align-items: center;       /* 수직 정렬 */
+    gap: 10px;                 /* 요소 간 간격 */
     margin-bottom: 30px;
 }
 
@@ -36,16 +38,24 @@ h1 {
     font-weight: bold;
 }
 
-.filter-form select, .filter-form button {
-    padding: 10px;
+.filter-form select,
+.filter-form button {
+    height: 40px; /* 동일 높이 설정 */
     font-size: 16px;
     border-radius: 5px;
     border: 1px solid #ddd;
 }
 
+.filter-form select {
+    padding: 0 10px; /* 드롭다운 내부 여백 */
+    width: auto;
+}
+
 .filter-form button {
+    padding: 0 16px; /* 좌우 여백만 설정 */
     background-color: #4CAF50;
     color: white;
+    border: none;
     cursor: pointer;
 }
 
