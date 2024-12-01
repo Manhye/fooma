@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Food</title>
+    <link rel="stylesheet" href="/css/add-food.css">
 </head>
 <body>
-<h1>Add a New Food</h1>
-<form action="/food/add" method="post">
-    <div>
-        <label for="name">Food Name:</label>
-        <input type="text" id="name" name="name" required="required">
-    </div>
-    <div>
-        <label for="expirationDate">Expiration Date:</label>
-        <input type="date" id="expirationDate" name="expirationDate" required="required">
-    </div>
-    <div>
-        <label for="location">Location:</label>
-        <input type="text" id="location" name="location" required="required">
-    </div>
-    <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required="required">
-    </div>
-    <div>
-        <label for="category">Category:</label>
-        <select id="category" name="category.id" required="required">
-            <th:block th:each="category : ${categories}">
-                <option th:value="${category.id}" th:text="${category.name}"></option>
-            </th:block>
-        </select>
-    </div>
-    <button type="submit">Add Food</button>
-</form>
-<a href="/foods">Back to Food List</a>
+<div class="container">
+    <h1>Add a New Food</h1>
+    <form action="/food/add" method="post" class="add-food-form">
+        <div class="form-group">
+            <label for="name">Food Name:</label>
+            <input type="text" id="name" name="name" required="required" placeholder="Enter food name">
+        </div>
+        <div class="form-group">
+            <label for="expirationDate">Expiration Date:</label>
+            <input type="date" id="expirationDate" name="expirationDate" required="required">
+        </div>
+        <div class="form-group">
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required="required" placeholder="Enter food location">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required="required" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <select id="category" name="category.id" required="required">
+                <th:block th:each="category : ${categories}">
+                    <option th:value="${category.id}" th:text="${category.name}"></option>
+                </th:block>
+            </select>
+        </div>
+        <button type="submit" class="submit-button">Add Food</button>
+    </form>
+    <a href="/foods" class="back-link">Back to Food List</a>
+</div>
 </body>
 </html>
