@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Food List</title>
+</head>
+<body>
+<h1>Available Foods</h1>
+
+<!-- 카테고리 선택 드롭다운 -->
+<form action="/foods" method="get">
+    <label for="category">Category:</label>
+    <select id="category" name="category">
+        <option value="">All Categories</option>
+        <th:block th:each="category : ${categories}">
+            <option th:value="${category.id}" th:text="${category.name}"></option>
+        </th:block>
+    </select>
+    <button type="submit">Filter</button>
+</form>
+
+<ul>
+    <th:block th:each="food : ${foods}">
+        <li>
+            <span th:text="${food.name}">Food Name</span> -
+            <span th:text="${food.location}">Food Location</span> -
+            <span th:text="${food.category.name}">Category</span> <!-- 카테고리 추가 -->
+            <td>
+                <a th:href="@{/food/{id}/take(id=${food.id})}">Take Food</a>
+            </td>
+        </li>
+    </th:block>
+</ul>
+
+<a href="/">Back to Home</a>
+<a href="/food/add">
+    <button>음식 추가하기</button>
+</a>
+</body>
+</html>
